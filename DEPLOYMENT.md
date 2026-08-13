@@ -47,7 +47,7 @@ For the least operational work, keep the repository connected to Manus and publi
 ## 5. Release checklist
 
 1. Confirm `.env` files and credentials are never committed.
-2. Run `pnpm run verify` locally or through GitHub Actions.
+2. Run `pnpm run verify` locally or configure the same command in the selected CI service.
 3. Review and apply any pending SQL migration once.
 4. Confirm login and a protected action with a non-production account.
 5. Deploy the application and confirm the selected custom domain is serving HTTPS.
