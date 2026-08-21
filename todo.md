@@ -13,3 +13,7 @@
 - [x] Claude Code 등 외부 AI 개발 도구용 프로젝트 구조·환경 변수·명령어 문서화
 - [x] 외부 배포용 설정과 GitHub 저장소 동기화 상태 점검
 - [x] 수정·배포 절차 검증 및 인계 안내 작성
+- [x] Firebase Spark 무료 환경의 호스팅·인증·데이터베이스 제약 조사
+- [x] 현재 MySQL·Manus OAuth 구조의 Firebase Authentication·Cloud Firestore 전환 설계
+- [x] Firebase CLI 설정, 배포 절차, 보안 규칙 및 데이터 이관 안내 작성
+- [x] Firebase 전환 문서 검증 및 GitHub 동기화

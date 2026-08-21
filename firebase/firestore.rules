@@ -1,0 +1,55 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function validEmployee() {
+      return request.resource.data.name is string
+        && request.resource.data.name.size() > 0
+        && request.resource.data.name.size() <= 80
+        && request.resource.data.isActive is bool;
+    }
+
+    function validKeepEntry() {
+      return request.resource.data.keptOn is string
+        && request.resource.data.liquorName is string
+        && request.resource.data.liquorName.size() > 0
+        && request.resource.data.liquorName.size() <= 120
+        && request.resource.data.liquorNameLower is string
+        && request.resource.data.authorEmployeeId is string
+        && request.resource.data.authorName is string
+        && request.resource.data.remainingPercent is int
+        && request.resource.data.remainingPercent >= 0
+        && request.resource.data.remainingPercent <= 100;
+    }
+
+    function validWithdrawal() {
+      return request.resource.data.customerName is string
+        && request.resource.data.customerName.size() > 0
+        && request.resource.data.customerName.size() <= 100
+        && request.resource.data.employeeId is string
+        && request.resource.data.employeeName is string;
+    }
+
+    match /employees/{employeeId} {
+      allow read: if signedIn();
+      allow create, update: if signedIn() && validEmployee();
+      allow delete: if signedIn();
+    }
+
+    match /keepEntries/{entryId} {
+      allow read: if signedIn();
+      allow create, update: if signedIn() && validKeepEntry();
+      allow delete: if false;
+
+      match /withdrawals/{withdrawalId} {
+        allow read: if signedIn();
+        allow create, update: if signedIn() && validWithdrawal();
+        allow delete: if false;
+      }
+    }
+  }
+}

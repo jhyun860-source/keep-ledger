@@ -1,0 +1,21 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "keepEntries",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "authorEmployeeId", "order": "ASCENDING" },
+        { "fieldPath": "keptOn", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "keepEntries",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "keptOn", "order": "DESCENDING" },
+        { "fieldPath": "createdAt", "order": "DESCENDING" }
+      ]
+    }
+  ],
+  "fieldOverrides": []
+}
